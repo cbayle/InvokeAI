@@ -25,6 +25,12 @@ startv(){
 		export HSA_SVM_GUARD_PAGES=0
 		export HSA_DISABLE_CACHE=1
 	fi
+	case $ROCMV in
+		6.3)
+			uv pip install --reinstall triton==3.1.0 
+		;;
+	esac
+	uv pip list | grep triton
 	invokeai-web --root ~/invokeai
 }
 
